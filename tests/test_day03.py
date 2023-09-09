@@ -1,22 +1,42 @@
 import pytest
-from src.day03 import visit_houses
+from src.day03 import visit_houses_and_count, visit_houses_with_robot_santa_and_count
 
 
-def test_visit_houses():
+def test_visit_houses_and_count():
     # Empty input
-    assert len(visit_houses("")) == 1
+    assert visit_houses_and_count("") == 1
 
     # Single move
-    assert len(visit_houses(">")) == 2
+    assert visit_houses_and_count(">") == 2
 
     # Multiple moves in same direction
-    assert len(visit_houses(">>>")) == 4
+    assert visit_houses_and_count(">>>") == 4
 
     # Multiple moves in different directions
-    assert len(visit_houses("^>v<")) == 4
+    assert visit_houses_and_count("^>v<") == 4
 
     # Multiple moves with backtracking
-    assert len(visit_houses("^v^v^v^v^v")) == 2
+    assert visit_houses_and_count("^v^v^v^v^v") == 2
 
     # Negative coordinates
-    assert len(visit_houses("vvvv")) == 5
+    assert visit_houses_and_count("vvvv") == 5
+
+
+def test_visit_houses_with_robot_santa_and_count():
+    # Empty input
+    assert visit_houses_with_robot_santa_and_count("") == 1
+
+    # Single move of santa
+    assert visit_houses_with_robot_santa_and_count(">") == 2
+
+    # Single move of robot santa
+    assert visit_houses_with_robot_santa_and_count(">^") == 3
+
+    # Multiple moves of santa and robot santa
+    assert visit_houses_with_robot_santa_and_count("^>v<") == 3
+
+    # Multiple moves of santa and robot santa with backtracking
+    assert visit_houses_with_robot_santa_and_count("^v^v^v^v^v") == 11
+
+    # Negative coordinates
+    assert visit_houses_with_robot_santa_and_count("vvvv") == 3
