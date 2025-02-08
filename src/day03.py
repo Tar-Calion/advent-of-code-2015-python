@@ -48,17 +48,19 @@ def visit_houses_with_robot_santa_and_count(data):
     return len(visited_houses)
 
 
-# read input.txt
-with open("data/day03/input.txt", "r") as file:
-    # read everything
-    data = file.read()
+if __name__ == "__main__":
+    # read input.txt
+    with open("data/day03/input.txt", "r") as file:
+        # read everything
+        data = file.read()
 
-# part one
-count_visited_houses = visit_houses_and_count(data)
-# print number of visited houses
-print("santa visits {} houses".format(count_visited_houses))
+    # part one
+    count_visited_houses = visit_houses_and_count(data)
+    # print number of visited houses
+    print("santa visits {} houses".format(count_visited_houses))
 
-# part two
-count_visited_houses_second_year = visit_houses_with_robot_santa_and_count(data)
-# print number of visited houses
-print("santa and robo santa visit {} houses".format(count_visited_houses_second_year))
+    # part two
+    count_visited_houses_second_year = visit_houses_with_robot_santa_and_count(data)
+    # print number of visited houses
+    print("santa and robo santa visit {} houses".format(count_visited_houses_second_year))
+
