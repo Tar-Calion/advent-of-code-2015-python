@@ -1,11 +1,8 @@
 import re
 
-def count_escapes(input_string):
-    lines = [line.strip() for line in input_string.splitlines()]
-
+def count_escapes(lines):
     total_characters = sum(len(line) for line in lines)
     memory_characters = sum(calculate_memory_characters(line) for line in lines)
-
     return total_characters - memory_characters
 
 def calculate_memory_characters(line):
@@ -27,14 +24,13 @@ def encode_string_representation(line):
 def main():
     with open("data/day08/input.txt", "r") as file:
         input_string = file.read()
-    result = count_escapes(input_string)
+    lines = [line.strip() for line in input_string.splitlines()]
+    result = count_escapes(lines)
     print("Original:", result)
 
-    encoded_lines = [encode_string_representation(line.strip()) for line in input_string.splitlines()]
-    encoded_string = '\n'.join(encoded_lines)
-    result = count_escapes(encoded_string)
+    encoded_lines = [encode_string_representation(line) for line in lines]
+    result = count_escapes(encoded_lines)
     print("Encoded:", result)
-
 
 if __name__ == "__main__":
     main()

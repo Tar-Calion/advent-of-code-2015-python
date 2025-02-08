@@ -4,16 +4,16 @@ from src.day08 import count_escapes, calculate_memory_characters, encode_string_
 class TestDay08(unittest.TestCase):
     def test_count_escapes(self):
         test_cases = [
-            ('""\n"abc"\n"a\\\\aa\\"aaa"\n"\\x27"', 13),
-            ('""', 2),
-            ('"azlgxdbljwygyttzkfwuxv"', 2),
-            ('"aaa\\"aaa"', 3),
-            ('"d\\\\gkbqo\\\\fwukyxabu"', 4),
-            ('"\\x27"', 5),
+            (['""', '"abc"', '"a\\\\aa\\"aaa"', '"\\x27"'], 13),
+            (['""'], 2),
+            (['"azlgxdbljwygyttzkfwuxv"'], 2),
+            (['"aaa\\"aaa"'], 3),
+            (['"d\\\\gkbqo\\\\fwukyxabu"'], 4),
+            (['"\\x27"'], 5),
         ]
-        for input_string, expected in test_cases:
-            with self.subTest(input_string=input_string):
-                result = count_escapes(input_string)
+        for input_list, expected in test_cases:
+            with self.subTest(input_list=input_list):
+                result = count_escapes(input_list)
                 self.assertEqual(result, expected)
 
     def test_calculate_memory_characters(self):
