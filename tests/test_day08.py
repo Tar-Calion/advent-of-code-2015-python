@@ -1,5 +1,5 @@
 import unittest
-from src.day08 import count_string_literals
+from src.day08 import count_string_literals, calculate_memory_characters
 
 class TestDay08(unittest.TestCase):
     def test_count_string_literals_with_newlines(self):
@@ -31,6 +31,13 @@ class TestDay08(unittest.TestCase):
         input_string = '"\\x27"'
         result = count_string_literals(input_string)
         self.assertEqual(result, 5)  # 6 - 1 = 5
+
+    def test_calculate_memory_characters(self):
+        self.assertEqual(calculate_memory_characters('""'), 0)
+        self.assertEqual(calculate_memory_characters('"abc"'), 3)
+        self.assertEqual(calculate_memory_characters('"aaa\\"aaa"'), 7)
+        self.assertEqual(calculate_memory_characters('"d\\\\gkbqo\\\\fwukyxabu"'), 17)
+        self.assertEqual(calculate_memory_characters('"\\x27"'), 1)
 
 if __name__ == "__main__":
     unittest.main()
